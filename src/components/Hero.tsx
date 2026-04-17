@@ -8,14 +8,16 @@ import { InfiniteSlider } from "@/components/ui/infinite-slider";
 const INTRO_VIDEO = "/videos/intro.mp4";
 
 const LOGOS = [
-  { alt: "OpenAI", src: "https://html.tailus.io/blocks/customers/openai.svg" },
-  { alt: "Nvidia", src: "https://html.tailus.io/blocks/customers/nvidia.svg" },
-  { alt: "GitHub", src: "https://html.tailus.io/blocks/customers/github.svg" },
-  { alt: "Column", src: "https://html.tailus.io/blocks/customers/column.svg" },
-  { alt: "Nike", src: "https://html.tailus.io/blocks/customers/nike.svg" },
-  { alt: "Lemon Squeezy", src: "https://html.tailus.io/blocks/customers/lemonsqueezy.svg" },
-  { alt: "Laravel", src: "https://html.tailus.io/blocks/customers/laravel.svg" },
-  { alt: "Lilly", src: "https://html.tailus.io/blocks/customers/lilly.svg" },
+  { alt: "OpenAI", src: "/logos/openai.svg" },
+  { alt: "Anthropic", src: "/logos/anthropic.svg" },
+  { alt: "Google Cloud", src: "/logos/googlecloud.svg" },
+  { alt: "Amazon Web Services", src: "/logos/amazon.svg" },
+  { alt: "Stripe", src: "/logos/stripe.svg" },
+  { alt: "HubSpot", src: "/logos/hubspot.svg" },
+  { alt: "Vercel", src: "/logos/vercel.svg" },
+  { alt: "Supabase", src: "/logos/supabase.svg" },
+  { alt: "Notion", src: "/logos/notion.svg" },
+  { alt: "Figma", src: "/logos/figma.svg" },
 ];
 
 function AnnouncementPill() {
@@ -111,9 +113,14 @@ function LogoCloud() {
     <section className="relative z-20 border-t border-white/5 bg-black/30 backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-6 py-10">
         <div className="flex flex-col items-center gap-6 md:flex-row md:gap-10">
-          <p className="shrink-0 text-sm font-medium text-white/60 md:max-w-[160px] md:text-left md:leading-snug">
-            Powering the best teams
-          </p>
+          <div className="shrink-0 text-center md:text-left md:max-w-[200px]">
+            <p className="text-xs font-medium uppercase tracking-wider text-[#E8B84F]">
+              Partnering across
+            </p>
+            <p className="mt-1 text-sm font-medium text-white/80 leading-snug">
+              Leading platforms &amp; infrastructure
+            </p>
+          </div>
           <div
             className="hidden h-10 w-px bg-white/10 md:block"
             aria-hidden="true"
@@ -121,13 +128,17 @@ function LogoCloud() {
           <div className="relative w-full overflow-hidden">
             <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-[#010409] to-transparent" />
             <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-[#010409] to-transparent" />
-            <InfiniteSlider gap={56} duration={40} durationOnHover={120}>
+            <InfiniteSlider gap={64} duration={40} durationOnHover={120}>
               {LOGOS.map((logo) => (
                 <img
                   key={logo.alt}
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-6 w-auto brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+                  className="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity"
+                  style={{
+                    filter:
+                      "invert(100%) brightness(1.4) grayscale(100%) contrast(1.1)",
+                  }}
                 />
               ))}
             </InfiniteSlider>
