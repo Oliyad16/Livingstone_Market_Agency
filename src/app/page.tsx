@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import { Hero } from "@/components/Hero";
 
 function Navbar() {
@@ -640,6 +641,22 @@ function Contact() {
             >
               Send message →
             </button>
+            <div className="flex items-center gap-4 py-1">
+              <span className="h-px flex-1 bg-white/10" />
+              <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/40">
+                or book directly
+              </span>
+              <span className="h-px flex-1 bg-white/10" />
+            </div>
+            <button
+              type="button"
+              data-cal-link="oliyad-deyasa-oiiybc/0924416887"
+              data-cal-namespace="0924416887"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              className="w-full rounded-full border border-white/15 bg-white/5 py-4 text-base font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              Choose a day &amp; time →
+            </button>
           </form>
         </div>
         <div className="mt-16 grid md:grid-cols-3 gap-8 text-center">
@@ -657,6 +674,47 @@ function Contact() {
           </div>
         </div>
       </div>
+      <Script id="cal-booking-embed" strategy="afterInteractive">
+        {`
+          (function (C, A, L) {
+            var p = function (a, ar) { a.q.push(ar); };
+            var d = C.document;
+            C.Cal = C.Cal || function () {
+              var cal = C.Cal;
+              var ar = arguments;
+              if (!cal.loaded) {
+                cal.ns = {};
+                cal.q = cal.q || [];
+                d.head.appendChild(d.createElement("script")).src = A;
+                cal.loaded = true;
+              }
+              if (ar[0] === L) {
+                var api = function () { p(api, arguments); };
+                var namespace = ar[1];
+                api.q = api.q || [];
+                if (typeof namespace === "string") {
+                  cal.ns[namespace] = cal.ns[namespace] || api;
+                  p(cal.ns[namespace], ar);
+                  p(cal, ["initNamespace", namespace]);
+                } else {
+                  p(cal, ar);
+                }
+                return;
+              }
+              p(cal, ar);
+            };
+          })(window, "https://app.cal.com/embed/embed.js", "init");
+
+          Cal("init", "0924416887", { origin: "https://app.cal.com" });
+          Cal.config = Cal.config || {};
+          Cal.config.forwardQueryParams = true;
+          Cal.ns["0924416887"]("ui", {
+            cssVarsPerTheme: { dark: { "cal-brand": "#3380d3" } },
+            hideEventTypeDetails: false,
+            layout: "month_view"
+          });
+        `}
+      </Script>
     </section>
   );
 }
